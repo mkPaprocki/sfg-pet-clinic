@@ -7,7 +7,7 @@ package com.github.mkpaprocki.sfgpetclinic.model;
  * <p>
  * Author    : Mateusz Paprocki
  */
-public class PetType {
+public class PetType extends BaseEntity {
 
     private String name;
 
