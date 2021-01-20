@@ -2,8 +2,6 @@ package com.github.mkpaprocki.sfgpetclinic.model.service;
 
 import com.github.mkpaprocki.sfgpetclinic.model.Owner;
 
-import java.util.Set;
-
 /**
  * Project: sfg-pet-clinic
  * <p>
@@ -11,13 +9,7 @@ import java.util.Set;
  * <p>
  * Author    : Mateusz Paprocki
  */
-public interface OwnerService {
+public interface OwnerService extends CrudService<Owner, Long> {
 
     Owner findByLastName(String lastName);
-
-    Owner findById(Long id);
-
-    Owner save(Owner owner);
-
-    Set<Owner> findAll();
 }

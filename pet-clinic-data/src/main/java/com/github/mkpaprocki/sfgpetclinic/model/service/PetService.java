@@ -2,8 +2,6 @@ package com.github.mkpaprocki.sfgpetclinic.model.service;
 
 import com.github.mkpaprocki.sfgpetclinic.model.Pet;
 
-import java.util.Set;
-
 /**
  * Project: sfg-pet-clinic
  * <p>
@@ -11,11 +9,5 @@ import java.util.Set;
  * <p>
  * Author    : Mateusz Paprocki
  */
-public interface PetService {
-
-    Pet findById(Long id);
-
-    Pet save(Pet pet);
-
-    Set<Pet> findAll();
+public interface PetService extends CrudService<Pet, Long> {
 }
