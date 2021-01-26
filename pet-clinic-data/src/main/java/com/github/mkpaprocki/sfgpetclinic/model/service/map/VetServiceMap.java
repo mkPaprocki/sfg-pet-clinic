@@ -3,6 +3,7 @@ package com.github.mkpaprocki.sfgpetclinic.model.service.map;
 import com.github.mkpaprocki.sfgpetclinic.model.Vet;
 import com.github.mkpaprocki.sfgpetclinic.model.service.CrudService;
 import com.github.mkpaprocki.sfgpetclinic.model.service.VetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -13,6 +14,7 @@ import java.util.Set;
  * <p>
  * Author    : Mateusz Paprocki
  */
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {

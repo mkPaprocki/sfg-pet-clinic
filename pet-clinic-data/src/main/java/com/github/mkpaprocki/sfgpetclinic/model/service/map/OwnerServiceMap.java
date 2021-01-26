@@ -2,6 +2,7 @@ package com.github.mkpaprocki.sfgpetclinic.model.service.map;
 
 import com.github.mkpaprocki.sfgpetclinic.model.Owner;
 import com.github.mkpaprocki.sfgpetclinic.model.service.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -12,6 +13,7 @@ import java.util.Set;
  * <p>
  * Author    : Mateusz Paprocki
  */
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {
