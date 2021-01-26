@@ -1,7 +1,7 @@
 package com.github.mkpaprocki.sfgpetclinic.model.service.map;
 
 import com.github.mkpaprocki.sfgpetclinic.model.Owner;
-import com.github.mkpaprocki.sfgpetclinic.model.service.CrudService;
+import com.github.mkpaprocki.sfgpetclinic.model.service.OwnerService;
 
 import java.util.Set;
 
@@ -12,7 +12,7 @@ import java.util.Set;
  * <p>
  * Author    : Mateusz Paprocki
  */
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {
         return super.findAll();
@@ -36,5 +36,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
     }
 }

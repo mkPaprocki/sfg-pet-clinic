@@ -2,6 +2,7 @@ package com.github.mkpaprocki.sfgpetclinic.model.service.map;
 
 import com.github.mkpaprocki.sfgpetclinic.model.Pet;
 import com.github.mkpaprocki.sfgpetclinic.model.service.CrudService;
+import com.github.mkpaprocki.sfgpetclinic.model.service.PetService;
 
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  * <p>
  * Author    : Mateusz Paprocki
  */
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
