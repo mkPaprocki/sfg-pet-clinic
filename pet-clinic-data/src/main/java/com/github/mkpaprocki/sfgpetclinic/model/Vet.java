@@ -1,5 +1,7 @@
 package com.github.mkpaprocki.sfgpetclinic.model;
 
+import java.util.Set;
+
 /**
  * Project: sfg-pet-clinic
  * <p>
@@ -8,4 +10,14 @@ package com.github.mkpaprocki.sfgpetclinic.model;
  * Author    : Mateusz Paprocki
  */
 public class Vet extends Person {
+
+    private Set<Speciality> specialities;
+
+    public Set<Speciality> getSpecialities() {
+        return specialities;
+    }
+
+    public void setSpecialities(Set<Speciality> specialities) {
+        this.specialities = specialities;
+    }
 }
