@@ -9,5 +9,5 @@ import com.github.mkpaprocki.sfgpetclinic.model.Speciality;
  * <p>
  * Author    : Mateusz Paprocki
  */
-public interface SpecialitiesService extends CrudService<Speciality, Long> {
+public interface SpecialtyService extends CrudService<Speciality, Long> {
 }
