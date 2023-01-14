@@ -1,5 +1,9 @@
 package com.github.mkpaprocki.sfgpetclinic.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Project: sfg-pet-clinic
  * <p>
@@ -7,15 +11,18 @@ package com.github.mkpaprocki.sfgpetclinic.model;
  * <p>
  * Author    : Mateusz Paprocki
  */
+@Entity
+@Table(name = "specialities")
 public class Speciality extends BaseEntity {
 
-    private String description;
+  @Column(name = "description")
+  private String description;
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 }
