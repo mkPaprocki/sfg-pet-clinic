@@ -1,4 +1,4 @@
-package com.github.mkpaprocki.sfgpetclinic.model.service.map;
+package com.github.mkpaprocki.sfgpetclinic.service.map;
 
 import com.github.mkpaprocki.sfgpetclinic.model.BaseEntity;
 

@@ -1,4 +1,4 @@
-package com.github.mkpaprocki.sfgpetclinic.model.service;
+package com.github.mkpaprocki.sfgpetclinic.service;
 
 import com.github.mkpaprocki.sfgpetclinic.model.PetType;
 
@@ -10,4 +10,6 @@ import com.github.mkpaprocki.sfgpetclinic.model.PetType;
  * Author    : Mateusz Paprocki
  */
 public interface PetTypeService extends CrudService<PetType, Long> {
+
+  void deleteById(Long id);
 }

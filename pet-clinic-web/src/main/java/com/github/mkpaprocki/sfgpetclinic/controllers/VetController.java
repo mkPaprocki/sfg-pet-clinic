@@ -1,6 +1,6 @@
 package com.github.mkpaprocki.sfgpetclinic.controllers;
 
-import com.github.mkpaprocki.sfgpetclinic.model.service.VetService;
+import com.github.mkpaprocki.sfgpetclinic.service.VetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

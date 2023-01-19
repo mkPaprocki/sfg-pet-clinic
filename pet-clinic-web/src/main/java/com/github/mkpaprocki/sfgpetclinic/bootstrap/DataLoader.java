@@ -1,10 +1,10 @@
 package com.github.mkpaprocki.sfgpetclinic.bootstrap;
 
 import com.github.mkpaprocki.sfgpetclinic.model.*;
-import com.github.mkpaprocki.sfgpetclinic.model.service.OwnerService;
-import com.github.mkpaprocki.sfgpetclinic.model.service.PetTypeService;
-import com.github.mkpaprocki.sfgpetclinic.model.service.SpecialtyService;
-import com.github.mkpaprocki.sfgpetclinic.model.service.VetService;
+import com.github.mkpaprocki.sfgpetclinic.service.OwnerService;
+import com.github.mkpaprocki.sfgpetclinic.service.PetTypeService;
+import com.github.mkpaprocki.sfgpetclinic.service.SpecialtyService;
+import com.github.mkpaprocki.sfgpetclinic.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.github.mkpaprocki.sfgpetclinic.model.service;
+package com.github.mkpaprocki.sfgpetclinic.service;
 
 import com.github.mkpaprocki.sfgpetclinic.model.Owner;
 
@@ -11,5 +11,7 @@ import com.github.mkpaprocki.sfgpetclinic.model.Owner;
  */
 public interface OwnerService extends CrudService<Owner, Long> {
 
-    Owner findByLastName(String lastName);
+  Owner findByLastName(String lastName);
+
+  void deleteById(Long Id);
 }

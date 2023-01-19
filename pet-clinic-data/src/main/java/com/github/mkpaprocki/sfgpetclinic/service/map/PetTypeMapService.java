@@ -1,7 +1,7 @@
-package com.github.mkpaprocki.sfgpetclinic.model.service.map;
+package com.github.mkpaprocki.sfgpetclinic.service.map;
 
 import com.github.mkpaprocki.sfgpetclinic.model.PetType;
-import com.github.mkpaprocki.sfgpetclinic.model.service.PetTypeService;
+import com.github.mkpaprocki.sfgpetclinic.service.PetTypeService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -26,7 +26,7 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long> impleme
     }
 
     @Override
-    void deleteById(Long id) {
+    public void deleteById(Long id) {
         map.remove(id);
     }
 
