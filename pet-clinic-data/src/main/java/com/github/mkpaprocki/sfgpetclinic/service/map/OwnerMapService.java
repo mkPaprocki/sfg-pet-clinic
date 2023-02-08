@@ -5,6 +5,7 @@ import com.github.mkpaprocki.sfgpetclinic.model.Pet;
 import com.github.mkpaprocki.sfgpetclinic.service.OwnerService;
 import com.github.mkpaprocki.sfgpetclinic.service.PetService;
 import com.github.mkpaprocki.sfgpetclinic.service.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -17,6 +18,7 @@ import java.util.Set;
  * Author    : Mateusz Paprocki
  */
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
   private final PetTypeService petTypeService;
@@ -61,19 +63,22 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
           }
         });
       }
-            return super.save(object);
-        } else {
-            return null;
-        }
+      return super.save(object);
+    } else {
+      return null;
     }
+  }
 
-    @Override
-    public Owner findById(Long id) {
-        return super.findById(id);
-    }
+  @Override
+  public Owner findById(Long id) {
+    return super.findById(id);
+  }
 
-    @Override
-    public Owner findByLastName(String lastName) {
-        return null;
-    }
+  @Override
+  public Owner findByLastName(String lastName) {
+    return this.findAll().stream()
+        .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+        .findFirst()
+        .orElse(null);
+  }
 }
