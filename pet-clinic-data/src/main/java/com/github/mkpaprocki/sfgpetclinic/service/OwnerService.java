@@ -2,6 +2,8 @@ package com.github.mkpaprocki.sfgpetclinic.service;
 
 import com.github.mkpaprocki.sfgpetclinic.model.Owner;
 
+import java.util.List;
+
 /**
  * Project: sfg-pet-clinic
  * <p>
@@ -12,6 +14,8 @@ import com.github.mkpaprocki.sfgpetclinic.model.Owner;
 public interface OwnerService extends CrudService<Owner, Long> {
 
   Owner findByLastName(String lastName);
+
+  List<Owner> findAllByLastNameLike(String lastName);
 
   void deleteById(Long Id);
 }
