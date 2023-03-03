@@ -3,8 +3,7 @@ package com.github.mkpaprocki.sfgpetclinic.controllers;
 import com.github.mkpaprocki.sfgpetclinic.model.Owner;
 import com.github.mkpaprocki.sfgpetclinic.model.Pet;
 import com.github.mkpaprocki.sfgpetclinic.model.Visit;
-import com.github.mkpaprocki.sfgpetclinic.repositories.VisitRepository;
-import com.github.mkpaprocki.sfgpetclinic.service.OwnerService;
+import com.github.mkpaprocki.sfgpetclinic.service.PetService;
 import com.github.mkpaprocki.sfgpetclinic.service.VisitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,19 +12,19 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditorSupport;
+import java.time.LocalDate;
 
 @Controller
 class VisitController {
 
-  private final OwnerService ownerService;
+  private final PetService petService;
   private final VisitService visitService;
-  private final VisitRepository visitRepository;
 
-  public VisitController(OwnerService ownerService, VisitService visitService,
-                         VisitRepository visitRepository) {
-    this.ownerService = ownerService;
+  public VisitController(PetService petService, VisitService visitService) {
+    this.petService = petService;
+
     this.visitService = visitService;
-    this.visitRepository = visitRepository;
   }
 
   @InitBinder
@@ -42,18 +41,25 @@ class VisitController {
    * @return Pet
    */
   @ModelAttribute("visit")
-  public Visit loadPetWithVisit(@PathVariable("ownerId") Long ownerId, @PathVariable("petId") Long petId,
-                                Model model) {
-    Owner owner = ownerService.findById(ownerId);
-
-    Pet pet = owner.getPet(petId);
+  public Visit loadPetWithVisit(@PathVariable("ownerId") Long ownerId, @PathVariable("petId") Long petId, Model model) {
+    Pet pet = petService.findById(petId);
     model.addAttribute("pet", pet);
-    model.addAttribute("owner", owner);
-
-    Visit visit = new Visit();
+    Visit visit = Visit.builder().build();
     pet.getVisits().add(visit);
     visit.setPet(pet);
     return visit;
+  }
+
+  @InitBinder
+  public void dataBinder(WebDataBinder dataBinder) {
+    dataBinder.setDisallowedFields("id");
+
+    dataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+      @Override
+      public void setAsText(String text) throws IllegalArgumentException {
+        setValue(LocalDate.parse(text));
+      }
+    });
   }
 
   // Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is
@@ -66,17 +72,17 @@ class VisitController {
   // Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is
   // called
   @PostMapping("/owners/{ownerId}/pets/{petId}/visits/new")
-  public String processNewVisitForm(@ModelAttribute Owner owner, @PathVariable int petId, @Valid Visit visit,
-                                    BindingResult result) {
+  public String processNewVisitForm(@ModelAttribute Owner owner, @PathVariable Long petId, @Valid Visit visit, BindingResult result) {
     if (result.hasErrors()) {
       return "pets/createOrUpdateVisitForm";
     }
 
-    Pet pet = owner.getPets().stream().filter(ownersPet -> ownersPet.getId() == petId).findFirst().get();
+    Pet pet = petService.findById(petId);
     pet.getVisits().add(visit);
+    visit.setPet(pet);
 
     visitService.save(visit);
-    return "redirect:/owners/" + visit.getPet().getOwner().getId();
+    return "redirect:/owners/" + pet.getOwner().getId();
   }
 
 }
